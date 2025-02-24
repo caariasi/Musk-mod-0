@@ -1,5 +1,6 @@
-#Ejercicio 8
 '''
+#Ejercicio 8
+
 class Estudiante:
         
     def calcular_media(self, notas):
@@ -60,6 +61,7 @@ estudiante1.cambiar_escuela("Escuela privada")
 print("escuela final: {}".format(estudiante1.escuela))
 
 '''
+
 #Ejercicio 10
 
 class Estudiante:
@@ -85,16 +87,13 @@ class Estudiante:
         cls.escuela = nueva_escuela
         
     def _comprobar_asistencia(self, asistencia):
-        resultados = {}
-        
-        for mes, numero_asistencias in asistencia.items():
+        for numero_asistencias in asistencia.values():
             if numero_asistencias < 4:
-                resultados[mes] = 1
-            elif 4 <= numero_asistencias < 8:
-                resultados[mes] = 2
-            else:
-                resultados[mes] = 3
-        return resultados
+                return 1
+        for numero_asistencias in asistencia.values():
+            if 4 <= numero_asistencias < 8:
+                return 2
+        return 3
     
     def imprimir_asistencia(self, asistencia):
         return self._comprobar_asistencia(asistencia)
@@ -103,14 +102,13 @@ class Estudiante:
 estudiante1 = Estudiante()
 
 asistencia = {
-    "septiembre": 4,
+    "septiembre": 9,
     "octubre": 8,
-    "noviembre": 2,
-    "diciembre": 6
+    "noviembre": 8,
+    "diciembre": 10
 }
 
 resultados = estudiante1.imprimir_asistencia(asistencia)
 
-for mes, evaluacion in resultados.items():
-    print("Mes: {}, Evaluacion {}".format(mes,evaluacion))
+print(resultados)
     
